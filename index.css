@@ -27,3 +27,12 @@ button.draw {
     font-size: 1.2em;
     padding: 5px;
 }
+
+.card-slot {
+    display: flex;
+    margin: 3em auto;
+    height: 110px;
+    width: 85px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
