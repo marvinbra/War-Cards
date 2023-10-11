@@ -1,4 +1,5 @@
 let deckId
+const winningCard = document.getElementById("determineCardWinner")
 
 function handleClick() {
     fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -21,6 +22,9 @@ document.getElementById("draw-cards").addEventListener("click", () => {
             `<img src=${data.cards[0].image} class="card" />`
              document.getElementById("card-slot2").innerHTML = 
             `<img src=${data.cards[1].image} class="card" />`
+            winningCard.innerHTML = `
+            <h2>${determineCardWinner(data.cards[0], data.cards[1])}</h2>
+            `
             
         })
 })
@@ -34,19 +38,10 @@ function determineCardWinner(card1, card2) {
     console.log("card 2:", card2ValueIndex)
     
     if (card1ValueIndex > card2ValueIndex) {
-        console.log("Card 1 wins!")
+        return "Card 1 wins!"
     } else if (card1ValueIndex < card2ValueIndex) {
-        console.log("Card 2 wins!")
+        return "Card 2 wins!"
     } else {
-        console.log("It's a tie!")
+        return "War!"
     }
 }
-
-const card1Obj = {
-    value: "JACK"
-}
-const card2Obj = {
-    value: "QUEEN"
-}
-
-determineCardWinner(card1Obj, card2Obj)
