@@ -17,6 +17,9 @@ document.getElementById("draw-cards").addEventListener("click", () => {
         .then(res => res.json())
         .then(data => {
             console.log(data.remaining)
+            if (data.remaining === 0) {
+                document.getElementById("draw-cards").disabled = true
+            }
             remainingCards.innerHTML = `
                 <p>Remaining Cards: ${data.remaining}</p>
             `
